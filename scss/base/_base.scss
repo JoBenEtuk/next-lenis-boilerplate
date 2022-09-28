@@ -1,0 +1,51 @@
+html {
+	overflow-x: hidden;
+	scroll-behavior: initial;
+	overscroll-behavior: none;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+
+	font-size: calc(100vw / 1368 * 10);
+	line-height: 1;
+
+	@include respondMax('tablet') {
+		font-size: calc(100vw / 768 * 10);
+	}
+
+	@include respondMax('mobile2x') {
+		font-size: calc(100vw / 675 * 10);
+	}
+}
+
+body {
+	width: 100%;
+	min-height: 100%;
+	font-family: 'Work Sans', 'sans-serif';
+	background-color: $col-white;
+	color: $col-black;
+}
+
+a {
+	color: inherit;
+	outline: none;
+	text-decoration: none;
+}
+
+button,
+[role='button'] {
+	background: none;
+	border: none;
+	color: inherit;
+	cursor: pointer;
+	outline: none;
+}
+
+[data-animation='label'],
+[data-animation='paragraphs'],
+[data-animation='title'] {
+	overflow: hidden;
+	span {
+		display: inline-block;
+		vertical-align: top;
+	}
+}

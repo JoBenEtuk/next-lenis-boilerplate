@@ -1,0 +1,25 @@
+{
+    "name": "Next Lenis Starter",
+    "short_name": "Next Lenis",
+    "description": "Boilerplate for next js using lenis scroll",
+    "icons": [
+        {
+            "src": "/icon.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/icon.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "theme_color": "#3fc380",
+    "background_color": "#333333",
+    "start_url": "/",
+    "scope": ".",
+    "display": "standalone",
+    "orientation": "portrait"
+}

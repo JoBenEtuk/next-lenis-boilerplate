@@ -1,0 +1,10 @@
+@import '@/scss/import.scss';
+
+.panel {
+	@extend %cover;
+	@extend %center;
+	position: fixed;
+	background: $col-black;
+	z-index: z('preloader');
+	transform: translateY(100%);
+}

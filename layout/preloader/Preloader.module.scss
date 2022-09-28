@@ -1,0 +1,24 @@
+@import '@/scss/import.scss';
+
+.preloader {
+	@extend %cover;
+	@extend %center;
+	position: fixed;
+	background: $col-black;
+	color: $col-white;
+	z-index: z('preloader');
+	h1 {
+		@extend %header-85;
+		overflow: hidden;
+		span {
+			display: inline-block;
+			transform: translateY(105%);
+			overflow: hidden;
+			width: 0;
+			&:nth-child(1),
+			&:nth-child(5) {
+				width: auto;
+			}
+		}
+	}
+}

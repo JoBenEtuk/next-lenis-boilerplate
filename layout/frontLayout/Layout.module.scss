@@ -1,0 +1,37 @@
+@import '@/scss/import.scss';
+
+.layout {
+	padding-top: 5rem;
+
+	&__child {
+		min-height: 100vh;
+		@extend %container;
+		h1 {
+			@extend %header-85;
+		}
+	}
+}
+
+.layout__header {
+	@extend %container;
+	@extend %flex-ac-jb;
+	a {
+		@extend %description-14;
+		font-family: 'Reem Kufi', sans-serif;
+		font-weight: 700;
+	}
+
+	&__left {
+		@extend %flex-ac;
+		gap: 3rem;
+		ul {
+			@extend %flex-ac;
+			gap: 3rem;
+			li {
+				a {
+					@extend %link--hidden;
+				}
+			}
+		}
+	}
+}

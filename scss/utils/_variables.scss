@@ -1,0 +1,25 @@
+$col-white: #ffffff;
+$col-black: #000000;
+
+$col-green: #3fc380;
+$col-orange: #f17427;
+$col-red: #f96066;
+$col-light-blue: #90afec;
+$shadow-blue: -10px 35px 54px rgba(144, 175, 236, 0.1);
+$shadow-green: -10px 35px 54px rgba(63, 195, 128, 0.15);
+
+$z-indexes: (
+	'noscript',
+	'preloader',
+	'cursor',
+	'navigation',
+	'content',
+	'canvas',
+	'4',
+	'3',
+	'2',
+	'1'
+);
+
+$ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+$ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);

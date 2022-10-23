@@ -7,10 +7,18 @@ export class Page extends EventEmitter {
 	elements: any
 	transformPrefix: any
 	lenis: any
+	selectors: { element: any; elements: any }
+	element: any
 
-	constructor({ ...elements }: any) {
+	constructor({ element, elements }: any) {
 		super()
-		this.elements = elements
+
+		this.selectors = {
+			element,
+			elements: {
+				...elements,
+			},
+		}
 
 		this.lenis = new Lenis({
 			duration: 1,
@@ -20,13 +28,28 @@ export class Page extends EventEmitter {
 			smoothTouch: false,
 			touchMultiplier: 2,
 		})
+
+		this.create()
 	}
 
 	create(): void {
-		this.components = {}
-		// for each of the data type passed in, select all and then save it as an item in this.elements
-		each(this.elements, (component: any, key: any) => {
-			this.components[key] = document.querySelectorAll(component)
+		this.element = document.querySelector(this.selectors.element)
+		this.elements = {}
+
+		each(this.selectors.elements, (selector, key) => {
+			if (selector instanceof window.HTMLElement || selector instanceof window.NodeList) {
+				this.elements[key] = selector
+			} else if (Array.isArray(selector)) {
+				this.elements[key] = selector
+			} else {
+				this.elements[key] = this.element.querySelectorAll(selector)
+
+				if (this.elements[key].length === 0) {
+					this.elements[key] = null
+				} else if (this.elements[key].length === 1) {
+					this.elements[key] = this.element.querySelector(selector)
+				}
+			}
 		})
 	}
 

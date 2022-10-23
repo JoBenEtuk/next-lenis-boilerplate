@@ -3,11 +3,15 @@ import { Page } from '../classes/page'
 export class Home extends Page {
 	constructor() {
 		super({
-			heroTitle: '[data-animation="heroTitle"]',
+			element: '[data-animation="home"]',
+			elements: {},
 		})
 	}
 
 	resetElements(): void {}
 
-	createComponentAnimations() {}
+	create() {
+		super.create()
+		// this.resetElements()
+	}
 }

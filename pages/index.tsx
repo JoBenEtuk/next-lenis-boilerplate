@@ -1,10 +1,13 @@
+import FrontLayout from '@/layout/frontLayout'
 import type { NextPage } from 'next'
 
 const Home: NextPage = () => {
 	return (
-		<section>
-			<h1>Hero</h1>
-		</section>
+		<FrontLayout page='home'>
+			<section>
+				<h1>Hero</h1>
+			</section>
+		</FrontLayout>
 	)
 }
 
@@ -13,7 +16,7 @@ export default Home
 export async function getServerSideProps() {
 	await waitload(2)
 	return {
-		props: { dummy: 'dummy' },
+		props: {},
 	}
 }
 

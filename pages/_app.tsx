@@ -1,26 +1,10 @@
 import '../scss/index.scss'
 import type { AppProps } from 'next/app'
-import { useCallback, useEffect, useRef } from 'react'
 import Head from 'next/head'
-import FrontLayout from '@/layout/frontLayout'
+import Preloader from '@/layout/preloader'
+import Panel from '@/layout/panel'
 
 function MyApp({ Component, pageProps }: AppProps) {
-	const hasInit = useRef<boolean>(false)
-	const init = useCallback(async () => {
-		// import animations
-		const App = (await import('@/animations')).App
-
-		// initialize new animation
-		new App({ page: 'home' })
-
-		// update ref
-		hasInit.current = true
-	}, [])
-
-	useEffect(() => {
-		!hasInit.current && init()
-	}, [])
-
 	return (
 		<>
 			<Head>
@@ -34,9 +18,11 @@ function MyApp({ Component, pageProps }: AppProps) {
 				<meta name='keywords' content='Keywords' />
 				<title>Next JS Lenis Starter</title>
 			</Head>
-			<FrontLayout>
+			<>
+				<Preloader />
+				<Panel />
 				<Component {...pageProps} />
-			</FrontLayout>
+			</>
 		</>
 	)
 }

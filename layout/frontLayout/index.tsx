@@ -1,39 +1,10 @@
-import React, { Fragment, useEffect, useState } from 'react'
-import Image from 'next/future/image'
-import { useRouter } from 'next/router'
+import React, { Fragment, useCallback, useEffect, useRef } from 'react'
 import Link from 'next/link'
-
-import Preloader from '../preloader'
-import Panel from '../panel'
 
 import S from './Layout.module.scss'
 
-const FrontLayout = ({ children }: any) => {
+const FrontLayout = ({ children, page }: { children: any; page: string }) => {
 	type ILinks = { href: string; name: string }
-	const router = useRouter()
-
-	// Preloader state
-	useEffect(() => {
-		if (typeof window !== 'undefined') {
-			window.onunload = function () {
-				sessionStorage.removeItem('preloader')
-			}
-		}
-		const timeout = setTimeout(() => {
-			sessionStorage.setItem('preloader', 'true')
-		}, 1000)
-		return () => {
-			clearTimeout(timeout)
-		}
-	}, [])
-
-	const [preload, setPreload] = useState<string | null>(null)
-
-	useEffect(() => {
-		if (typeof window !== 'undefined') {
-			setPreload(sessionStorage.getItem('preloader'))
-		}
-	}, [])
 
 	const links: ILinks[] = [
 		{
@@ -53,10 +24,25 @@ const FrontLayout = ({ children }: any) => {
 			name: 'Contact',
 		},
 	]
+
+	const hasInit = useRef<boolean>(false)
+
+	const init = useCallback(async () => {
+		// import animations
+		const App = (await import('@/animations')).App
+
+		// initialize new animation
+		new App({ page })
+
+		// update ref
+		hasInit.current = true
+	}, [])
+	useEffect(() => {
+		!hasInit.current && init()
+	}, [])
+
 	return (
 		<Fragment>
-			{!preload && <Preloader />}
-			<Panel />
 			<main className={S.layout} data-main>
 				<header className={S.layout__header}>
 					<div className={S.layout__header__left}>

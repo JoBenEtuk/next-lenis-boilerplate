@@ -22,7 +22,7 @@ export class Page extends EventEmitter {
 
 		this.lenis = new Lenis({
 			duration: 1,
-			easing: (t: number) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)), // https://easings.net
+			easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
 			direction: 'vertical',
 			smooth: true,
 			smoothTouch: false,

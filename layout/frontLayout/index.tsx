@@ -49,9 +49,7 @@ const FrontLayout = ({ children, page }: { children: any; page: string }) => {
 						<ul>
 							{links.map((link) => (
 								<li key={link.href}>
-									<Link href={link.href}>
-										<a>{link.name}</a>
-									</Link>
+									<Link href={link.href}>{link.name}</Link>
 								</li>
 							))}
 						</ul>

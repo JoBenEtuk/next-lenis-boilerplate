@@ -13,10 +13,10 @@
     "auto-bind": "^5.0.1",
     "gsap": "^3.11.1",
     "lodash": "^4.17.21",
-    "next": "12.3.1",
+    "next": "^13.0.0",
     "next-pwa": "^5.6.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "sass": "^1.55.0",
     "splitting": "^1.0.6"
   },
@@ -26,7 +26,7 @@
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
     "eslint": "8.24.0",
-    "eslint-config-next": "12.3.1",
+    "eslint-config-next": "^13.0.0",
     "typescript": "4.8.3"
   }
 }

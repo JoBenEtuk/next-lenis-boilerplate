@@ -12,14 +12,3 @@ const About: NextPage = () => {
 }
 
 export default About
-
-export async function getServerSideProps() {
-	await waitload(2)
-	return {
-		props: {},
-	}
-}
-
-function waitload(sec: number) {
-	return new Promise((resolve) => setTimeout(resolve, sec * 1000))
-}

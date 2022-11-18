@@ -1,8 +1,11 @@
 import '../scss/index.scss'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+
 import Preloader from '@/layout/preloader'
-import Panel from '@/layout/panel'
+import Transition from '@/layout/Transition'
+import { TransitionProvider } from '@/layout/Transition/TransitionContext'
+import TransitionLayout from '@/layout/Transition/TransitionLayout'
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
@@ -19,9 +22,13 @@ function MyApp({ Component, pageProps }: AppProps) {
 				<title>Next JS Lenis Starter</title>
 			</Head>
 			<>
-				<Preloader />
-				<Panel />
-				<Component {...pageProps} />
+				<TransitionProvider>
+					<TransitionLayout>
+						<Preloader />
+						<Transition />
+						<Component {...pageProps} />
+					</TransitionLayout>
+				</TransitionProvider>
 			</>
 		</>
 	)

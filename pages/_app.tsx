@@ -4,7 +4,6 @@ import Head from 'next/head'
 
 import Preloader from '@/layout/preloader'
 import Transition from '@/layout/Transition'
-import { TransitionProvider } from '@/layout/Transition/TransitionContext'
 import TransitionLayout from '@/layout/Transition/TransitionLayout'
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -22,13 +21,11 @@ function MyApp({ Component, pageProps }: AppProps) {
 				<title>Next JS Lenis Starter</title>
 			</Head>
 			<>
-				<TransitionProvider>
-					<TransitionLayout>
-						<Preloader />
-						<Transition />
-						<Component {...pageProps} />
-					</TransitionLayout>
-				</TransitionProvider>
+				<Preloader />
+				<Transition />
+				<TransitionLayout>
+					<Component {...pageProps} />
+				</TransitionLayout>
 			</>
 		</>
 	)

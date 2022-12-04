@@ -2,7 +2,6 @@ import React, { Fragment, useCallback, useEffect, useRef } from 'react'
 import Link from 'next/link'
 
 import S from './Layout.module.scss'
-import AnimateInOut from '../Transition/AnimateInOut'
 
 const FrontLayout = ({ children, page }: { children: any; page: string }) => {
 	type ILinks = { href: string; name: string }
@@ -57,9 +56,7 @@ const FrontLayout = ({ children, page }: { children: any; page: string }) => {
 					</div>
 				</header>
 
-				<AnimateInOut>
-					<section className={S.layout__child}>{children}</section>
-				</AnimateInOut>
+				<section className={S.layout__child}>{children}</section>
 			</main>
 		</Fragment>
 	)

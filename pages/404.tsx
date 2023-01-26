@@ -1,45 +1,37 @@
 import FrontLayout from '@/layout/frontLayout'
 
-import { wrapper } from '@/redux/store'
-
 import { gsap } from 'gsap'
 import { forwardRef, useRef, useImperativeHandle } from 'react'
 
 const ErrorPage = (props: any, ref) => {
-  const el = useRef<any>(null)
+	const el = useRef<any>(null)
 
-  const animateIn = () => {
-    return gsap
-      .timeline({
-        paused: true,
-        defaults: {
-          duration: 1,
-        },
-      })
-      .timeScale(0.5)
-      .to(el.current, {
-        autoAlpha: 1,
-      })
-      .restart()
-  }
+	const animateIn = () => {
+		return gsap
+			.timeline({
+				paused: true,
+				defaults: {
+					duration: 1,
+				},
+			})
+			.timeScale(0.5)
+			.to(el.current, {
+				autoAlpha: 1,
+			})
+			.restart()
+	}
 
-  useImperativeHandle(ref, () => ({
-    animateIn,
-  }))
+	useImperativeHandle(ref, () => ({
+		animateIn,
+	}))
 
-  return (
-    <section ref={el}>
-      <FrontLayout page="about">
-        <h1>ERROR</h1>
-      </FrontLayout>
-    </section>
-  )
+	return (
+		<section ref={el}>
+			<FrontLayout page='about'>
+				<h1>ERROR</h1>
+			</FrontLayout>
+		</section>
+	)
 }
 
 export default forwardRef(ErrorPage)
-
-export const getStaticProps = wrapper.getStaticProps(() => async () => {
-  return {
-    props: {},
-  }
-})

@@ -28,18 +28,16 @@ const FrontLayout = ({ children, page }: { children: any; page: string }) => {
 	const hasInit = useRef<boolean>(false)
 
 	const init = useCallback(async () => {
-		// import animations
 		const App = (await import('@/animations')).App
-
-		// initialize new animation
 		new App({ page: 'home' })
-
-		// update ref
-		hasInit.current = true
 	}, [])
+
 	useEffect(() => {
 		!hasInit.current && init()
-	}, [])
+		return () => {
+			hasInit.current = true
+		}
+	}, [init])
 
 	return (
 		<Fragment>

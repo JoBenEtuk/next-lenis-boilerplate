@@ -4,9 +4,11 @@ import Head from 'next/head'
 
 import Preloader from '@/layout/preloader'
 import Transition from '@/layout/Transition'
-import TransitionLayout from '@/layout/Transition/TransitionLayout'
+
+import { useFoucFix } from '@/hooks'
 
 function MyApp({ Component, pageProps }: AppProps) {
+	useFoucFix()
 	return (
 		<>
 			<Head>
@@ -22,10 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 			</Head>
 			<>
 				<Preloader />
-				<Transition />
-				<TransitionLayout>
-					<Component {...pageProps} />
-				</TransitionLayout>
+				<Transition Component={Component} pageProps={pageProps} />
 			</>
 		</>
 	)

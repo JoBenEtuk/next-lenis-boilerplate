@@ -1,14 +1,37 @@
 import FrontLayout from '@/layout/frontLayout'
-import type { NextPage } from 'next'
+import { gsap } from 'gsap'
+import { forwardRef, useImperativeHandle, useRef } from 'react'
 
-const About: NextPage = () => {
+const AboutPage = (_, ref: any) => {
+	const el = useRef<any>(null)
+
+	const animateIn = () => {
+		return gsap
+			.timeline({
+				paused: true,
+				defaults: {
+					duration: 1,
+				},
+			})
+			.timeScale(0.5)
+			.to(el.current, {
+				autoAlpha: 1,
+			})
+			.restart()
+	}
+
+	useImperativeHandle(ref, () => ({
+		animateIn,
+	}))
 	return (
-		<FrontLayout page='about'>
-			<section>
-				<h1>About</h1>
-			</section>
-		</FrontLayout>
+		<section ref={el}>
+			<FrontLayout page='about'>
+				<section>
+					<h1>About</h1>
+				</section>
+			</FrontLayout>
+		</section>
 	)
 }
 
-export default About
+export default forwardRef(AboutPage)

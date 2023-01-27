@@ -1,35 +1,26 @@
+/* eslint-disable no-unused-vars */
 import { EventEmitter } from 'events'
+import AutoBind from 'auto-bind'
 import { each } from 'lodash'
-import Lenis from '@studio-freight/lenis'
 
 export class Page extends EventEmitter {
 	components: any
 	elements: any
-	transformPrefix: any
-	lenis: any
 	selectors: { element: any; elements: any }
 	element: any
 
 	constructor({ element, elements }: any) {
 		super()
+		AutoBind(this)
 
 		this.selectors = {
 			element,
 			elements: {
+				// animationsParagraphs: '[data-animation="paragraphs"]',
+				preloaders: '[src]',
 				...elements,
 			},
 		}
-
-		this.lenis = new Lenis({
-			duration: 1,
-			easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-			direction: 'vertical',
-			smooth: true,
-			smoothTouch: false,
-			touchMultiplier: 2,
-		})
-
-		this.create()
 	}
 
 	create(): void {
@@ -53,16 +44,22 @@ export class Page extends EventEmitter {
 		})
 	}
 
-	show(): void {}
+	show() {}
 
-	update(): void {
-		const raf = (time: any) => {
-			this.lenis.raf(time)
-			requestAnimationFrame(raf)
-		}
+	reset() {}
 
-		requestAnimationFrame(raf)
-	}
+	/**
+	 * Events
+	 */
+	onResize() {}
 
-	addEventListeners(): void {}
+	onWheel(event: any) {}
+
+	onTouchDown(event: any) {}
+
+	onTouchMove(event: any) {}
+
+	onTouchUp(event: any) {}
+
+	update() {}
 }

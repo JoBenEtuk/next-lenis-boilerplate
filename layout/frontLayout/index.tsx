@@ -54,7 +54,9 @@ const FrontLayout = ({ children, page }: { children: any; page: string }) => {
 					</div>
 				</header>
 
-				<section className={S.layout__child}>{children}</section>
+				<section className={S.layout__child} data-animation={page}>
+					{children}
+				</section>
 			</main>
 		</Fragment>
 	)
